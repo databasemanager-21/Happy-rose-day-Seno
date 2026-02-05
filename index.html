@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day 🌹</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.95);
+        padding: 30px 25px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        max-width: 350px;
+        animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+        color: #e63946;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #444;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .rose {
+        font-size: 60px;
+        cursor: pointer;
+        animation: float 2s infinite ease-in-out;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 25px;
+        background: #e63946;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #c1121f;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .petal {
+        position: absolute;
+        top: -50px;
+        font-size: 20px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="rose" onclick="showWish()">🌹</div>
+    <h1>Happy Rose Day</h1>
+    <p id="text">
+        Tap the rose 💖
+    </p>
+    <button class="hidden" id="btn" onclick="petals()">
+        For My Best Friend 💕
+    </button>
+</div>
+
+<script>
+function showWish() {
+    document.getElementById("text").innerHTML =
+        "To my best friend My Laado💫<br><br>" +
+        "This rose is a symbol of our beautiful friendship 🌹<br>" +
+        "Thank you for always being there, for the laughs, the memories, and the support 💖<br><br>" +
+        "Happy Rose Day, My Laado  🤍";
+    document.getElementById("btn").classList.remove("hidden");
+}
+
+function petals() {
+    for (let i = 0; i < 25; i++) {
+        let petal = document.createElement("div");
+        petal.className = "petal";
+        petal.innerHTML = "🌸";
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 5000);
+    }
+}
+</script>
+
+</body>
+</html>
